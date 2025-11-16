@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SAGNWEU DANG FRANCLIN JUNIOR — Carte</title>
+  <title>SAGNWEU DANG FRANCLIN JUNIOR — Profil</title>
+  <meta name="description" content="Profil de Sagnweu Dang Franclin Junior — Enseignant de Mathématiques & Informatique" />
   <style>
     :root{
-      --bg1: #4c6ef5;
-      --bg2: #15aabf;
-      --card: #ffffff;
-      --muted: #6b7280;
+      --bg1:#4c6ef5; --bg2:#15aabf; --card:#ffffff; --muted:#6b7280;
+      --accent:#25D366; /* vert WhatsApp */
     }
     *{box-sizing:border-box}
     body{
@@ -20,75 +19,138 @@
       justify-content:center;
       font-family: Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
       background: linear-gradient(135deg,var(--bg1),var(--bg2));
-      padding:24px;
+      padding:20px;
+      color:#0f172a;
     }
-    .container{
+
+    .wrap{
       width:100%;
-      max-width:900px;
+      max-width:980px;
       display:grid;
       grid-template-columns: 360px 1fr;
-      gap:28px;
+      gap:26px;
       align-items:start;
     }
-    /* card (left) */
+
+    /* Card gauche */
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.98));
       border-radius:18px;
       padding:22px;
-      box-shadow:0 12px 30px rgba(2,6,23,0.25);
+      box-shadow:0 18px 40px rgba(2,6,23,0.18);
       text-align:center;
+      position:relative;
+      overflow:visible;
     }
     .avatar{
       width:200px;
       height:200px;
       border-radius:50%;
       object-fit:cover;
-      border:6px solid rgba(76,110,245,0.15);
-      box-shadow:0 6px 18px rgba(12,24,60,0.12);
+      border:6px solid rgba(76,110,245,0.12);
+      box-shadow:0 6px 18px rgba(12,24,60,0.10);
       margin:0 auto 14px;
       background:#eee;
+      display:block;
     }
     h1{font-size:1.25rem;margin:6px 0;color:#0f172a;}
     .role{color:var(--muted);font-size:0.95rem;margin-bottom:12px;}
+
     .contact{
       display:flex;
-      gap:8px;
+      gap:10px;
       justify-content:center;
-      margin-top:10px;
+      margin-top:14px;
       flex-wrap:wrap;
     }
     .chip{
       background:#f1f5f9;
-      padding:8px 10px;
+      padding:10px 12px;
       border-radius:999px;
-      font-size:0.9rem;
+      font-size:0.95rem;
       color:#0f172a;
       text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
     }
 
-    /* info panel (right) */
+    /* Info droit */
     .info{
       background: rgba(255,255,255,0.95);
       border-radius:18px;
       padding:20px;
-      box-shadow:0 10px 24px rgba(2,6,23,0.12);
+      box-shadow:0 14px 32px rgba(2,6,23,0.12);
     }
     .info h2{margin:0 0 12px;font-size:1.05rem;color:#0f172a;}
     dl{display:grid;grid-template-columns:140px 1fr;gap:10px 18px;align-items:center;margin:0;}
-    dt{color:var(--muted);font-weight:600;font-size:0.9rem;}
+    dt{color:var(--muted);font-weight:700;font-size:0.9rem;}
     dd{margin:0;font-size:0.98rem;color:#111827;}
     .fullwidth{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}
-    .links a{color:var(--bg1);text-decoration:none;font-weight:600}
+
+    /* CV + QR + Buttons */
+    .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700;
+      background:#0f172a;
+      color:white;
+      box-shadow:0 6px 18px rgba(2,6,23,0.12);
+    }
+    /* WhatsApp clignotant */
+    .whatsapp{
+      background:linear-gradient(90deg,var(--accent), #1ebe5c);
+      color:white;
+      border: none;
+      animation: blink 1s infinite alternate;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    @keyframes blink {
+      from { transform: scale(1); opacity:1; box-shadow:0 8px 24px rgba(37,211,102,0.28); }
+      to   { transform: scale(1.06); opacity:0.78; box-shadow:0 14px 40px rgba(37,211,102,0.12); }
+    }
+
+    /* QR image */
+    .qr { width:160px; border-radius:10px; margin-top:8px; display:block; margin-left:auto; margin-right:auto; }
+
+    /* Audio controls (simple) */
+    .audio-control{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      justify-content:center;
+      margin-top:12px;
+    }
+    .audio-btn{
+      padding:8px 12px;
+      border-radius:10px;
+      background:#0f172a;
+      color:white;
+      text-decoration:none;
+      font-weight:600;
+    }
+
     footer{margin-top:14px;color:var(--muted);font-size:0.85rem;text-align:right}
+
     /* responsive */
-    @media (max-width:820px){
-      .container{grid-template-columns:1fr;max-width:520px}
+    @media (max-width:900px){
+      .wrap{grid-template-columns:1fr; max-width:620px}
       .avatar{width:150px;height:150px}
+      .qr{width:120px}
     }
   </style>
 </head>
 <body>
-  <main class="container" role="main">
+  <!-- audio (autoplay may be blocked by some navigateurs ; contrôles fournis) -->
+  <audio id="bgAudio" src="music.mp3" loop></audio>
+
+  <main class="wrap" role="main">
+    <!-- gauche -->
     <section class="card" aria-labelledby="name">
       <img class="avatar" src="profile.jpg" alt="Photo de Sagnweu Dang Franclin Junior" />
       <h1 id="name">SAGNWEU DANG FRANCLIN JUNIOR</h1>
@@ -99,8 +161,34 @@
         <a class="chip" href="tel:+237670604635">📞 +237 670 604 635</a>
         <a class="chip" href="mailto:juniorsagnweu1@gmail.com">✉️ juniorsagnweu1@gmail.com</a>
       </div>
+
+      <div class="actions" style="justify-content:center; margin-top:14px;">
+        <!-- WhatsApp clignotant -->
+        <a class="btn whatsapp" id="whatsappBtn" href="https://wa.me/237657250575" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="vertical-align:middle">
+            <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.373 0 0 5.373 0 12c0 2.115.553 4.082 1.605 5.83L0 24l6.386-1.597A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.205-1.25-6.21-3.48-8.52z" fill="#fff" opacity="0.05"/>
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.149-.198.297-.768.967-.942 1.166-.173.198-.346.223-.643.074-.297-.149-1.255-.462-2.39-1.475-.885-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.133-.133.297-.346.446-.52.149-.173.198-.297.297-.495.099-.198 0-.371-.05-.52-.05-.148-.672-1.612-.92-2.21-.242-.579-.487-.5-.672-.51l-.572-.01c-.198 0-.52.074-.793.371s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.073 4.487  .709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.123-.273-.198-.57-.347z" fill="#fff"/>
+          </svg>
+          <span style="margin-left:6px;">WhatsApp</span>
+        </a>
+
+        <!-- Email -->
+        <a class="btn" href="mailto:juniorsagnweu1@gmail.com">Email</a>
+
+        <!-- Télécharger CV -->
+        <a class="btn" href="cv.pdf" download>Télécharger le CV</a>
+      </div>
+
+      <!-- contrôles audio simples -->
+      <div class="audio-control">
+        <button class="audio-btn" id="playPauseBtn">▶︎ Play</button>
+        <button class="audio-btn" id="muteBtn">🔈 Muet</button>
+      </div>
+
+      <footer style="margin-top:12px; font-size:0.85rem; color:var(--muted);">© Sagnweu — Loum, Cameroun</footer>
     </section>
 
+    <!-- droite : infos -->
     <aside class="info" aria-labelledby="infoTitle">
       <h2 id="infoTitle">Informations personnelles</h2>
       <dl>
@@ -109,21 +197,74 @@
         <dt>Niveau d'étude</dt><dd>Master 1 en Mathématiques</dd>
         <dt>Profession</dt><dd>Enseignant de Mathématiques et Informatique</dd>
         <dt>Téléphones</dt><dd>657250575 / 670604635</dd>
-        <dt>Email</dt><dd><a class="links" href="mailto:juniorsagnweu1@gmail.com">juniorsagnweu1@gmail.com</a></dd>
+        <dt>Email</dt><dd><a href="mailto:juniorsagnweu1@gmail.com">juniorsagnweu1@gmail.com</a></dd>
         <dt>Adresse</dt><dd>Loum, Cameroun</dd>
 
         <div class="fullwidth">
           <dt>Langues</dt><dd>Français (courant) — Anglais (basique)</dd>
         </div>
         <div class="fullwidth">
-          <dt>Compétences</dt><dd>Mathématiques, Algorithmique, Initiation à l'informatique</dd>
+          <dt>Compétences</dt><dd>Mathématiques, Algorithmique, Initiation à l'informatique, Pédagogie</dd>
         </div>
         <div class="fullwidth">
           <dt>Objectif</dt><dd>Enseigner et contribuer à la réussite des élèves en mathématiques et logique informatique.</dd>
         </div>
       </dl>
-      <footer>© Sagnweu — Loum, Cameroun</footer>
+
+      <div class="fullwidth" style="margin-top:14px;">
+        <div style="flex:1">
+          <div style="font-weight:700; margin-bottom:8px;">QR Code vers ce site</div>
+          <img src="qr.png" alt="QR code menant au site" class="qr" />
+        </div>
+      </div>
+
+      <div style="margin-top:16px;">
+        <div style="font-weight:700; margin-bottom:8px;">Expériences & Projets</div>
+        <ul style="padding-left:18px; margin:0 0 8px 0; color:#0f172a;">
+          <li>Enseignement en collège / lycée — Cours de mathématiques</li>
+          <li>Initiation à l'informatique et algorithmique</li>
+          <li>Projets pédagogiques & exercices interactifs</li>
+        </ul>
+      </div>
     </aside>
   </main>
+
+  <script>
+    // Audio control logic
+    const audio = document.getElementById('bgAudio');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const muteBtn = document.getElementById('muteBtn');
+
+    // Try to autoplay with user gesture fallback
+    function tryAutoPlay() {
+      audio.play().then(() => {
+        playPauseBtn.textContent = '⏸︎ Pause';
+      }).catch(() => {
+        // Autoplay blocked — leave paused, user can press Play
+        playPauseBtn.textContent = '▶︎ Play';
+      });
+    }
+    tryAutoPlay();
+
+    playPauseBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playPauseBtn.textContent = '⏸︎ Pause';
+      } else {
+        audio.pause();
+        playPauseBtn.textContent = '▶︎ Play';
+      }
+    });
+
+    muteBtn.addEventListener('click', () => {
+      audio.muted = !audio.muted;
+      muteBtn.textContent = audio.muted ? '🔇 Muet' : '🔈 Son';
+    });
+
+    // Accessibility: announce whatsapp button action for screen readers
+    document.getElementById('whatsappBtn').addEventListener('click', () => {
+      // nothing needed, link opens WhatsApp
+    });
+  </script>
 </body>
 </html>
