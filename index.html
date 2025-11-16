@@ -1,194 +1,441 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sagnweu Dang Franclin Junior</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SAGNWEU DANG FRANCLIN JUNIOR — Profil</title>
+  <meta name="description" content="Profil de Sagnweu Dang Franclin Junior — Enseignant de Mathématiques & Informatique" />
+  <meta name="author" content="Sagnweu Dang Franclin Junior" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: radial-gradient(circle at top, #082032, #000000);
-      color: white;
-      min-height: 100vh;
-      padding: 0;
-      overflow-x: hidden;
+    :root{
+      --bg:#07131a;
+      --card: rgba(255,255,255,0.03);
+      --accent:#00eaff;
+      --accent2:#00ffc8;
+      --muted: rgba(255,255,255,0.8);
+      --whatsapp:#25D366;
+      --glass: rgba(255,255,255,0.04);
     }
 
-    /* Effets particules */
+    /* Light theme variables (will be toggled) */
+    :root.light {
+      --bg: #f5f7fb;
+      --card: rgba(0,0,0,0.03);
+      --accent: #0b61ff;
+      --accent2: #00aabf;
+      --muted: #2b3b46;
+      --whatsapp: #1ea851;
+      --glass: rgba(0,0,0,0.03);
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html,body { height: 100%; margin:0; }
+    body{
+      font-family: "Poppins", system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at 10% 0%, #0b2b33 0%, #04080a 40%), var(--bg);
+      background-color: var(--bg);
+      color: #eaf7ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding: 12px;
+    }
+
+    /* particles background */
     #particles {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-      background: url('https://i.ibb.co/4fvFz0L/particles.gif');
-      opacity: 0.28;
+      position: fixed; inset: 0; z-index: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.12;
+      pointer-events: none;
+      mix-blend-mode: overlay;
     }
 
-    /* Header premium */
-    header {
-      text-align: center;
-      padding: 40px 20px;
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+    /* Header */
+    header{
+      text-align:center; z-index:2; position:relative; margin-top:6px;
     }
-
-    header h1 {
-      font-size: 32px;
+    header h1{
+      margin: 8px 0 4px;
+      font-size: 22px;
+      color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #00eaff;
-      animation: glow 2s infinite ease-in-out;
+      letter-spacing: 1px;
+      font-weight:700;
+      text-shadow: 0 0 10px rgba(0,234,255,0.10);
+      transition: text-shadow .4s;
+    }
+    header p { margin:0; color: var(--muted); font-size: 13px; }
+
+    /* layout */
+    .wrap{
+      max-width: 1100px;
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 26px;
+      z-index:2;
+      align-items:start;
     }
 
-    @keyframes glow {
-      0% { text-shadow: 0 0 8px #00eaff; }
-      50% { text-shadow: 0 0 18px #00eaff; }
-      100% { text-shadow: 0 0 8px #00eaff; }
+    /* left card */
+    .card {
+      background: linear-gradient(180deg, var(--card), rgba(255,255,255,0.01));
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid var(--glass);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      position: relative;
     }
 
-    .container {
-      max-width: 600px;
-      margin: 35px auto;
-      padding: 25px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 0 25px rgba(0,0,0,0.5);
-      animation: fadeIn 1.2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .photo {
-      width: 170px;
-      height: 170px;
+    .avatar {
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      display: block;
-      margin: auto;
-      border: 4px solid #00ffc8;
-      box-shadow: 0 0 30px #00ffc8;
       object-fit: cover;
+      display:block;
+      margin: 6px auto 12px;
+      border: 6px solid rgba(0,255,200,0.06);
+      box-shadow: 0 18px 40px rgba(0,255,200,0.04);
+      transition: transform .35s, box-shadow .35s;
+    }
+    .avatar:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 26px 60px rgba(0,255,200,0.08); }
+
+    .name { text-align:center; font-weight:700; color:var(--accent); font-size:18px; margin:6px 0; }
+    .role { text-align:center; color:var(--muted); font-size:13px; margin-bottom:10px; }
+
+    .chips { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
+    .chip { background: rgba(255,255,255,0.03); padding:8px 12px; border-radius:999px; font-weight:600; color: #eaf7ff; font-size:13px; text-decoration:none; border:1px solid rgba(255,255,255,0.02); }
+
+    .left-actions { display:flex; gap:8px; justify-content:center; margin-top:14px; flex-wrap:wrap; }
+    .left-actions .action-btn {
+      padding:10px 14px; border-radius:12px; text-decoration:none; font-weight:700; font-size:14px; color:white;
+      background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.04);
+      display:inline-flex; align-items:center; gap:8px;
     }
 
-    .section-title {
-      margin-top: 35px;
-      font-size: 20px;
-      color: #00eaff;
-      font-weight: bold;
-      border-left: 4px solid #00eaff;
-      padding-left: 10px;
+    .action-btn.call {
+      background: linear-gradient(90deg,#4ddc9c,#2fc18d);
+      box-shadow: 0 14px 40px rgba(47,193,141,0.12);
+      animation: callPulse 1.4s infinite alternate;
+    }
+    @keyframes callPulse{
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
     }
 
-    .info { margin-top: 15px; line-height: 1.9; font-size: 16px; }
-
-    .label { color: #00ffc8; font-weight: bold; }
-
-    /* Bouton WhatsApp */
-    .whatsapp-btn {
-      display: block;
-      margin: 35px auto 0;
-      width: 85%;
-      text-align: center;
-      background: #25D366;
-      color: white;
-      padding: 14px;
-      text-decoration: none;
-      border-radius: 35px;
-      font-size: 19px;
-      font-weight: bold;
-      box-shadow: 0 0 25px #25D366;
-      animation: pulse 1.4s infinite ease-in-out;
+    .action-btn.whatsapp {
+      background: linear-gradient(90deg,var(--whatsapp), #1ebe5c);
+      box-shadow: 0 14px 40px rgba(37,211,102,0.12);
+      animation: wpPulse 1.2s infinite alternate;
+    }
+    @keyframes wpPulse{
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.09); }
-      100% { transform: scale(1); }
+    /* small controls */
+    .audio-controls { display:flex; gap:8px; justify-content:center; margin-top:12px; }
+    .audio-controls button { padding:8px 10px; border-radius:10px; border:none; cursor:pointer; font-weight:700; background:rgba(255,255,255,0.04); color:var(--muted); }
+
+    /* right info panel */
+    .info {
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));
+      border-radius:14px; padding:20px; border:1px solid var(--glass); box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+    }
+    .section-title { font-weight:700; color:var(--accent); margin:0 0 10px 0; }
+    dl { display:grid; grid-template-columns: 160px 1fr; gap:8px 16px; align-items:center; margin:0 0 12px 0; }
+    dt { color:var(--muted); font-weight:700; font-size:13px; }
+    dd { margin:0; font-size:15px; color:#e6f6f8; }
+
+    /* skills */
+    .skills { margin-top:10px; display:grid; gap:10px; }
+    .skill { padding:10px; border-radius:10px; background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.02); }
+    .skill .row { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:8px; }
+    .bar { height:10px; background: rgba(255,255,255,0.06); border-radius:999px; overflow:hidden; }
+    .bar > i { display:block; height:100%; width:0%; background: linear-gradient(90deg,var(--accent2), var(--accent)); border-radius:999px; transition: width 1.2s ease; }
+
+    /* projects */
+    .projects { margin-top:12px; display:grid; gap:10px; }
+    .project { padding:12px; border-radius:10px; background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.02); }
+
+    /* timeline */
+    .timeline { margin-top:12px; border-left:2px solid rgba(255,255,255,0.04); padding-left:12px; }
+    .timeline-item { margin-bottom:10px; }
+    .timeline-item .year { font-weight:700; color:var(--muted); margin-bottom:4px; display:block; }
+
+    /* testimonials */
+    .testimonials { margin-top:12px; display:grid; gap:8px; }
+    .testimonial { padding:10px; border-radius:10px; background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.02); font-size:14px; }
+
+    /* QR and share */
+    .bottom-row { display:flex; gap:12px; align-items:center; justify-content:space-between; margin-top:16px; }
+    .qr { width:100px; height:100px; object-fit:cover; border-radius:8px; border:1px solid rgba(255,255,255,0.03); }
+
+    /* language toggle */
+    .lang-toggle { position: fixed; top: 12px; left: 12px; z-index: 8; background: rgba(0,0,0,0.35); color:#eaf7ff; padding:8px 10px; border-radius:999px; cursor:pointer; border:1px solid rgba(255,255,255,0.03); }
+
+    footer { margin-top:18px; text-align:center; color: rgba(255,255,255,0.45); font-size:13px; }
+
+    /* responsive */
+    @media (max-width: 920px) {
+      .wrap { grid-template-columns: 1fr; padding:12px; }
+      .avatar { width:160px; height:160px; }
+      dl { grid-template-columns: 1fr; }
+      .bottom-row { flex-direction:column; gap:10px; align-items:center; }
+      .qr { width:120px; height:120px; }
     }
 
-    /* Projets */
-    .project-box {
-      margin-top: 15px;
-      background: rgba(255,255,255,0.07);
-      padding: 15px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    /* Langues */
-    .lang-switch {
-      position: fixed;
-      top: 15px; right: 15px;
-      background: rgba(255,255,255,0.15);
-      padding: 10px 16px;
-      border-radius: 25px;
-      backdrop-filter: blur(10px);
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .lang-switch:hover { background: rgba(255,255,255,0.25); }
-
+    /* small accessible focus */
+    a:focus, button:focus { outline: 3px solid rgba(0,234,255,0.14); outline-offset:2px; }
   </style>
 </head>
-
 <body>
-<div id="particles"></div>
+  <div id="particles" aria-hidden="true"></div>
 
-<div class="lang-switch">🇫🇷 / 🇬🇧</div>
+  <button class="lang-toggle" id="themeToggle" title="Basculer thème">🌓 Thème</button>
 
-<header>
-  <h1>SAGNWEU DANG FRANCLIN JUNIOR</h1>
-</header>
+  <header>
+    <h1>SAGNWEU DANG FRANCLIN JUNIOR</h1>
+    <p id="subtitle">Enseignant de Mathématiques & Informatique — Master 1 Mathématiques</p>
+  </header>
 
-<div class="container">
-  <img src="profile.jpg" class="photo" />
+  <main class="wrap" role="main" aria-labelledby="name">
+    <!-- LEFT: profile card -->
+    <section class="card" aria-labelledby="name">
+      <img src="profile.jpg" alt="Photo de Sagnweu" class="avatar" onerror="this.style.opacity=0.6" />
+      <div class="name" id="name">SAGNWEU DANG FRANCLIN JUNIOR</div>
+      <div class="role">Enseignant • Mathématiques & Informatique</div>
 
-  <div class="section-title">Informations personnelles</div>
-  <div class="info">
-    <p><span class="label">Date de naissance :</span> 22 mai 2000</p>
-    <p><span class="label">Lieu de naissance :</span> Loum</p>
-    <p><span class="label">Nationalité :</span> Camerounaise</p>
-    <p><span class="label">Statut matrimonial :</span> Célibataire</p>
-  </div>
+      <div class="chips" role="list" aria-label="Informations de contact">
+        <a class="chip" href="tel:+237657250575">📞 +237 657 250 575</a>
+        <a class="chip" href="tel:+237670604635">📞 +237 670 604 635</a>
+        <a class="chip" href="mailto:juniorsagnweu1@gmail.com">✉️ juniorsagnweu1@gmail.com</a>
+      </div>
 
-  <div class="section-title">Études & Profession</div>
-  <div class="info">
-    <p><span class="label">Niveau d'étude :</span> Master 1 en Mathématiques</p>
-    <p><span class="label">Profession :</span> Enseignant de Mathématiques & Informatique</p>
-  </div>
+      <div class="left-actions" role="group" aria-label="Actions rapides">
+        <a class="action-btn call" id="callBtn" href="tel:+237657250575" aria-label="Appeler Sagnweu">
+          <!-- icon phone -->
+          📲 Appeler
+        </a>
 
-  <div class="section-title">Projets</div>
-  <div class="project-box">Développement d’outils pédagogiques numériques</div>
-  <div class="project-box">Création de supports de cours interactifs</div>
-  <div class="project-box">Initiation à la programmation pour élèves</div>
+        <a class="action-btn whatsapp" id="waBtn" href="https://wa.me/237657250575" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <!-- WhatsApp icon + label -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.373 0 0 5.373 0 12c0 2.115.553 4.082 1.605 5.83L0 24l6.386-1.597A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.205-1.25-6.21-3.48-8.52z" fill="#fff" opacity="0.06"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.149-.198.297-.768.967-.942 1.166-.173.198-.346.223-.643.074-.297-.149-1.255-.462-2.39-1.475-.885-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.133-.133.297-.346.446-.52.149-.173.198-.297.297-.495.099-.198 0-.371-.05-.52-.05-.148-.672-1.612-.92-2.21-.242-.579-.487-.5-.672-.51l-.572-.01c-.198 0-.52.074-.793.371s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.073 4.487  .709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.123-.273-.198-.57-.347z" fill="#fff"/></svg>
+          <span>WhatsApp</span>
+        </a>
 
-  <div class="section-title">Contacts</div>
-  <div class="info">
-    <p><span class="label">Téléphone :</span> 657250575 / 670604635</p>
-    <p><span class="label">Email :</span> juniorsagnweu1@gmail.com</p>
-    <p><span class="label">Ville :</span> Loum</p>
-  </div>
+        <a class="action-btn" href="mailto:juniorsagnweu1@gmail.com">✉️ Email</a>
+      </div>
 
-  <a class="whatsapp-btn" href="https://wa.me/237657250575">📞 WhatsApp</a>
-</div>
+      <div class="audio-controls" aria-hidden="false">
+        <button id="playPause" aria-pressed="false">▶ Play</button>
+        <button id="muteBtn" aria-pressed="false">🔈 Muet</button>
+      </div>
 
-<!-- Musique auto + démute au clic -->
-<audio id="bg-music" src="music.mp3" autoplay loop muted></audio>
-<script>
-  document.addEventListener("click", function () {
-    document.getElementById("bg-music").muted = false;
-  }, { once: true });
-</script>
+      <div style="text-align:center; margin-top:12px; font-size:13px; color:var(--muted);">© Sagnweu — Loum, Cameroun</div>
+    </section>
 
+    <!-- RIGHT: details -->
+    <aside class="info" aria-labelledby="infoTitle">
+      <div class="section-title" id="infoTitle">Informations personnelles</div>
+      <dl>
+        <dt>Date de naissance</dt><dd>22 mai 2000 — Loum</dd>
+        <dt>Nationalité</dt><dd>Camerounaise</dd>
+        <dt>Situation</dt><dd>Célibataire</dd>
+      </dl>
+
+      <div class="section-title">Études & Profession</div>
+      <dl>
+        <dt>Niveau d'étude</dt><dd>Master 1 — Mathématiques</dd>
+        <dt>Profession</dt><dd>Enseignant de Mathématiques & Informatique</dd>
+      </dl>
+
+      <div class="section-title">À propos</div>
+      <div style="margin-top:8px; color:#e6f6f8; line-height:1.6;">
+        Passionné par l'enseignement et l'innovation pédagogique, j'aide les élèves à maîtriser les notions mathématiques
+        et à découvrir la logique algorithmique. J'utilise des supports interactifs et des exercices adaptés au niveau.
+      </div>
+
+      <div class="section-title" style="margin-top:14px;">Cours & Services</div>
+      <ul style="margin:8px 0 0 18px; color:#e6f6f8; line-height:1.6;">
+        <li>Cours de mathématiques (collège / lycée)</li>
+        <li>Préparation aux examens</li>
+        <li>Initiation à l'informatique et à l'algorithmique</li>
+        <li>Soutien scolaire et remédiation</li>
+      </ul>
+
+      <div class="section-title" style="margin-top:14px;">Compétences</div>
+      <div class="skills" aria-hidden="false">
+        <div class="skill">
+          <div class="row"><div class="label">Enseignement des Mathématiques</div><div>95%</div></div>
+          <div class="bar" data-value="95"><i></i></div>
+        </div>
+
+        <div class="skill">
+          <div class="row"><div class="label">Enseignement de l'Informatique</div><div>90%</div></div>
+          <div class="bar" data-value="90"><i></i></div>
+        </div>
+
+        <div class="skill">
+          <div class="row"><div class="label">Programmation (bases)</div><div>75%</div></div>
+          <div class="bar" data-value="75"><i></i></div>
+        </div>
+
+        <div class="skill">
+          <div class="row"><div class="label">Analyse & résolution de problèmes</div><div>92%</div></div>
+          <div class="bar" data-value="92"><i></i></div>
+        </div>
+
+        <div class="skill">
+          <div class="row"><div class="label">Outils numériques (Word, Excel, GeoGebra)</div><div>85%</div></div>
+          <div class="bar" data-value="85"><i></i></div>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top:14px;">Projets & Expériences</div>
+      <div class="projects">
+        <div class="project">Développement d’outils pédagogiques numériques</div>
+        <div class="project">Création de supports de cours interactifs</div>
+        <div class="project">Initiation à la programmation pour élèves</div>
+      </div>
+
+      <div class="section-title" style="margin-top:14px;">Timeline</div>
+      <div class="timeline">
+        <div class="timeline-item"><span class="year">2024</span><div>Master 1 — Mathématiques</div></div>
+        <div class="timeline-item"><span class="year">2021–2023</span><div>Enseignement et création de supports pédagogiques</div></div>
+        <div class="timeline-item"><span class="year">2018–2020</span><div>Initiation à l'informatique & projets scolaires</div></div>
+      </div>
+
+      <div class="section-title" style="margin-top:14px;">Témoignages</div>
+      <div class="testimonials">
+        <div class="testimonial">« Excellent enseignant, clair et patient. » — Élève</div>
+        <div class="testimonial">« Approche pédagogique adaptée, résultats visibles. » — Parent</div>
+      </div>
+
+      <div class="bottom-row">
+        <div>
+          <div style="font-weight:700; margin-bottom:8px; color:var(--accent);">QR</div>
+          <img src="qr.png" alt="QR code vers le site" class="qr" onerror="this.style.opacity=0.35" />
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:8px; align-items:flex-end;">
+          <a class="action-btn" href="cv.pdf" download aria-label="Télécharger le CV">📄 Télécharger mon CV</a>
+          <a class="action-btn" id="shareBtn" href="#" onclick="navigator.share ? navigator.share({ title: 'Profil Sagnweu', url: location.href }) : alert('Votre navigateur ne supporte pas le partage.'); return false;">🔗 Partager</a>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>Site créé par Sagnweu • Loum, Cameroun</footer>
+
+  <!-- audio (autoplay may be blocked; we use muted then unmute on first interaction) -->
+  <audio id="bgAudio" src="music.mp3" loop autoplay muted></audio>
+
+  <script>
+    // THEME: automatic (based on hour) + manual toggle
+    (function(){
+      const root = document.documentElement;
+      const themeToggle = document.getElementById('themeToggle');
+
+      function applyAutoTheme(){
+        // dark between 19:00 and 06:00
+        const h = new Date().getHours();
+        if(h >= 7 && h < 19){
+          root.classList.remove('light');
+        } else {
+          root.classList.remove('light'); // default dark; user can toggle to light
+        }
+      }
+      applyAutoTheme();
+
+      themeToggle.addEventListener('click', ()=>{
+        if(root.classList.contains('light')) root.classList.remove('light');
+        else root.classList.add('light');
+      });
+    })();
+
+    // AUDIO: autoplay muted (browsers), unmute on first user interaction
+    (function(){
+      const audio = document.getElementById('bgAudio');
+      const playPause = document.getElementById('playPause');
+      const muteBtn = document.getElementById('muteBtn');
+
+      // try play (may be blocked)
+      audio.play().catch(()=>{ /* autoplay blocked */ });
+
+      // unmute on first interaction anywhere
+      function enableSoundOnce(){
+        try{ audio.muted = false; audio.play(); }catch(e){}
+        document.removeEventListener('click', enableSoundOnce);
+      }
+      document.addEventListener('click', enableSoundOnce, { once: true });
+
+      // play/pause control
+      playPause.addEventListener('click', ()=>{
+        if(audio.paused){ audio.play(); playPause.textContent = '⏸ Pause'; playPause.setAttribute('aria-pressed','true'); }
+        else { audio.pause(); playPause.textContent = '▶ Play'; playPause.setAttribute('aria-pressed','false'); }
+      });
+
+      // mute/unmute
+      muteBtn.addEventListener('click', ()=>{
+        audio.muted = !audio.muted;
+        muteBtn.textContent = audio.muted ? '🔇 Muet' : '🔈 Son';
+        muteBtn.setAttribute('aria-pressed', audio.muted ? 'true' : 'false');
+      });
+    })();
+
+    // Animate skill bars
+    (function(){
+      function animate(){
+        document.querySelectorAll('.bar').forEach(bar=>{
+          const v = parseInt(bar.dataset.value || '0',10);
+          const inner = bar.querySelector('i');
+          setTimeout(()=> inner.style.width = v + '%', 160);
+        });
+      }
+      window.addEventListener('load', animate);
+      window.addEventListener('DOMContentLoaded', animate);
+    })();
+
+    // Simple language toggle (FR/EN) - minimal demo
+    (function(){
+      const toggle = document.getElementById('themeToggle');
+      let en = false;
+      // double-purpose: left-click toggles theme; long press toggles language (mobile)
+      toggle.addEventListener('contextmenu', (e)=>{ e.preventDefault(); toggleLang(); });
+      let pressTimer;
+      toggle.addEventListener('mousedown', ()=>{ pressTimer = setTimeout(toggleLang, 600); });
+      toggle.addEventListener('mouseup', ()=>{ clearTimeout(pressTimer); });
+      function toggleLang(){
+        en = !en;
+        if(en){
+          document.getElementById('subtitle').textContent = 'Teacher of Mathematics & Computer Science — Master 1 Mathematics';
+          document.getElementById('name').textContent = 'SAGNWEU DANG FRANCLIN JUNIOR';
+          document.querySelectorAll('.section-title').forEach((el,i)=>{
+            const enTitles = ['Personal Info','Education & Work','About','Courses & Services','Skills','Projects & Experience','Timeline','Testimonials'];
+            if(enTitles[i]) el.textContent = enTitles[i];
+          });
+          // small swap for buttons
+          document.querySelectorAll('.action-btn').forEach(a=>{
+            a.innerText = a.innerText.replace('Appeler','Call').replace('WhatsApp','WhatsApp').replace('Envoyer un email','Send email');
+          });
+        } else location.reload();
+      }
+    })();
+
+    // share: already handled in element onclick for browsers supporting navigator.share
+
+    // Optional: visual focus for WhatsApp & Call on hover (accessibility)
+    (function(){
+      const wa = document.getElementById('waBtn');
+      const call = document.getElementById('callBtn');
+      [wa, call].forEach(el=>{
+        el.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') el.click(); });
+      });
+    })();
+  </script>
 </body>
 </html>
