@@ -1,270 +1,87 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SAGNWEU DANG FRANCLIN JUNIOR — Profil</title>
-  <meta name="description" content="Profil de Sagnweu Dang Franclin Junior — Enseignant de Mathématiques & Informatique" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil – SAGNWEU DANG FRANCLIN JUNIOR</title>
   <style>
-    :root{
-      --bg1:#4c6ef5; --bg2:#15aabf; --card:#ffffff; --muted:#6b7280;
-      --accent:#25D366; /* vert WhatsApp */
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-family: Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: linear-gradient(135deg,var(--bg1),var(--bg2));
-      padding:20px;
-      color:#0f172a;
-    }
-
-    .wrap{
-      width:100%;
-      max-width:980px;
-      display:grid;
-      grid-template-columns: 360px 1fr;
-      gap:26px;
-      align-items:start;
-    }
-
-    /* Card gauche */
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.98));
-      border-radius:18px;
-      padding:22px;
-      box-shadow:0 18px 40px rgba(2,6,23,0.18);
-      text-align:center;
-      position:relative;
-      overflow:visible;
-    }
-    .avatar{
-      width:200px;
-      height:200px;
-      border-radius:50%;
-      object-fit:cover;
-      border:6px solid rgba(76,110,245,0.12);
-      box-shadow:0 6px 18px rgba(12,24,60,0.10);
-      margin:0 auto 14px;
-      background:#eee;
-      display:block;
-    }
-    h1{font-size:1.25rem;margin:6px 0;color:#0f172a;}
-    .role{color:var(--muted);font-size:0.95rem;margin-bottom:12px;}
-
-    .contact{
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      margin-top:14px;
-      flex-wrap:wrap;
-    }
-    .chip{
-      background:#f1f5f9;
-      padding:10px 12px;
-      border-radius:999px;
-      font-size:0.95rem;
-      color:#0f172a;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-
-    /* Info droit */
-    .info{
-      background: rgba(255,255,255,0.95);
-      border-radius:18px;
-      padding:20px;
-      box-shadow:0 14px 32px rgba(2,6,23,0.12);
-    }
-    .info h2{margin:0 0 12px;font-size:1.05rem;color:#0f172a;}
-    dl{display:grid;grid-template-columns:140px 1fr;gap:10px 18px;align-items:center;margin:0;}
-    dt{color:var(--muted);font-weight:700;font-size:0.9rem;}
-    dd{margin:0;font-size:0.98rem;color:#111827;}
-    .fullwidth{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}
-
-    /* CV + QR + Buttons */
-    .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-    .btn{
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:700;
-      background:#0f172a;
-      color:white;
-      box-shadow:0 6px 18px rgba(2,6,23,0.12);
-    }
-    /* WhatsApp clignotant */
-    .whatsapp{
-      background:linear-gradient(90deg,var(--accent), #1ebe5c);
-      color:white;
-      border: none;
+    body { margin:0; font-family:Arial, sans-serif; background:linear-gradient(135deg,#4b79a1,#283e51); color:white; display:flex; justify-content:center; padding:20px; }
+    .card { background:rgba(255,255,255,0.1); backdrop-filter:blur(10px); padding:25px; border-radius:20px; max-width:520px; width:100%; box-shadow:0 4px 20px rgba(0,0,0,0.3); animation:fadeIn 1s ease; }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+    .photo { width:150px; height:150px; border-radius:50%; object-fit:cover; border:4px solid white; display:block; margin:0 auto 20px; }
+    h1 { text-align:center; margin-bottom:5px; font-size:28px; }
+    h2 { text-align:center; font-size:18px; margin-top:0; opacity:0.8; }
+    .section { margin-top:20px; background:rgba(255,255,255,0.15); padding:15px; border-radius:15px; }
+    .title { font-weight:bold; margin-bottom:8px; font-size:18px; }
+    .line { margin:5px 0; font-size:16px; }
+    .contact-btns { margin-top:20px; display:flex; gap:10px; }
+    .btn { animation:none;  flex:1; text-align:center; padding:12px; border-radius:12px; background:white; color:#283e51; text-decoration:none; font-weight:bold; box-shadow:0 2px 10px rgba(0,0,0,0.3); }
+    /* QR code + CV section */
+    .center { text-align:center; margin-top:20px; }
+    img.qr { width:160px; margin-top:10px; border-radius:10px; }
+      /* Animation clignotement WhatsApp */
+    .whatsapp {
       animation: blink 1s infinite alternate;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
     }
     @keyframes blink {
-      from { transform: scale(1); opacity:1; box-shadow:0 8px 24px rgba(37,211,102,0.28); }
-      to   { transform: scale(1.06); opacity:0.78; box-shadow:0 14px 40px rgba(37,211,102,0.12); }
+      from { transform: scale(1); opacity:1; }
+      to { transform: scale(1.1); opacity:0.65; }
     }
-
-    /* QR image */
-    .qr { width:160px; border-radius:10px; margin-top:8px; display:block; margin-left:auto; margin-right:auto; }
-
-    /* Audio controls (simple) */
-    .audio-control{
-      display:flex;
-      gap:8px;
-      align-items:center;
-      justify-content:center;
-      margin-top:12px;
-    }
-    .audio-btn{
-      padding:8px 12px;
-      border-radius:10px;
-      background:#0f172a;
-      color:white;
-      text-decoration:none;
-      font-weight:600;
-    }
-
-    footer{margin-top:14px;color:var(--muted);font-size:0.85rem;text-align:right}
-
-    /* responsive */
-    @media (max-width:900px){
-      .wrap{grid-template-columns:1fr; max-width:620px}
-      .avatar{width:150px;height:150px}
-      .qr{width:120px}
-    }
-  </style>
+</style>
 </head>
 <body>
-  <!-- audio (autoplay may be blocked by some navigateurs ; contrôles fournis) -->
-  <audio id="bgAudio" src="music.mp3" loop></audio>
+  <audio src="music.mp3" autoplay loop></audio>
+  <div class="card">
+    <img src="profile.jpg" class="photo" />
+    <h1>SAGNWEU DANG FRANCLIN JUNIOR</h1>
+    <h2>Enseignant de Mathématiques & Informatique</h2>
 
-  <main class="wrap" role="main">
-    <!-- gauche -->
-    <section class="card" aria-labelledby="name">
-      <img class="avatar" src="profile.jpg" alt="Photo de Sagnweu Dang Franclin Junior" />
-      <h1 id="name">SAGNWEU DANG FRANCLIN JUNIOR</h1>
-      <div class="role">Enseignant de Mathématiques & Informatique — Master 1 Mathématiques</div>
+    <div class="section">
+      <div class="title">Informations personnelles</div>
+      <div class="line">📅 Date de naissance : 22 mai 2000</div>
+      <div class="line">📌 Lieu de naissance : Loum</div>
+      <div class="line">❤️ Situation matrimoniale : Célibataire</div>
+      <div class="line">🎓 Niveau d'étude : Master 1 Mathématiques</div>
+    </div>
 
-      <div class="contact" aria-hidden="false">
-        <a class="chip" href="tel:+237657250575">📞 +237 657 250 575</a>
-        <a class="chip" href="tel:+237670604635">📞 +237 670 604 635</a>
-        <a class="chip" href="mailto:juniorsagnweu1@gmail.com">✉️ juniorsagnweu1@gmail.com</a>
-      </div>
+    <div class="section">
+      <div class="title">Compétences</div>
+      <div class="line">✔ Enseignement des Mathématiques</div>
+      <div class="line">✔ Informatique & Algorithmique</div>
+      <div class="line">✔ Programmation de base</div>
+      <div class="line">✔ Résolution de problèmes & Analyse</div>
+    </div>
 
-      <div class="actions" style="justify-content:center; margin-top:14px;">
-        <!-- WhatsApp clignotant -->
-        <a class="btn whatsapp" id="whatsappBtn" href="https://wa.me/237657250575" target="_blank" rel="noopener noreferrer">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="vertical-align:middle">
-            <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.373 0 0 5.373 0 12c0 2.115.553 4.082 1.605 5.83L0 24l6.386-1.597A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.205-1.25-6.21-3.48-8.52z" fill="#fff" opacity="0.05"/>
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.149-.198.297-.768.967-.942 1.166-.173.198-.346.223-.643.074-.297-.149-1.255-.462-2.39-1.475-.885-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.133-.133.297-.346.446-.52.149-.173.198-.297.297-.495.099-.198 0-.371-.05-.52-.05-.148-.672-1.612-.92-2.21-.242-.579-.487-.5-.672-.51l-.572-.01c-.198 0-.52.074-.793.371s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.073 4.487  .709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.123-.273-.198-.57-.347z" fill="#fff"/>
-          </svg>
-          <span style="margin-left:6px;">WhatsApp</span>
-        </a>
+    <div class="section">
+      <div class="title">Contact</div>
+      <div class="line">📞 Téléphone : 657250575 / 670604635</div>
+      <div class="line">📧 Email : juniorsagnweu1@gmail.com</div>
+      <div class="line">🌍 Pays : Cameroun</div>
+      <div class="line">🏙️ Ville : Loum</div>
+    </div>
 
-        <!-- Email -->
-        <a class="btn" href="mailto:juniorsagnweu1@gmail.com">Email</a>
+    <div class="section">
+      <div class="title">Téléchargement du CV</div>
+      <div class="line">Clique ci‑dessous pour obtenir ton CV :</div>
+      <a class="btn" href="cv.pdf" download>Télécharger le CV</a>
+    </div>
 
-        <!-- Télécharger CV -->
-        <a class="btn" href="cv.pdf" download>Télécharger le CV</a>
-      </div>
+    <div class="center">
+      <div class="title">QR Code vers ce site</div>
+      <img src="qr.png" class="qr" />
+    </div>
 
-      <!-- contrôles audio simples -->
-      <div class="audio-control">
-        <button class="audio-btn" id="playPauseBtn">▶︎ Play</button>
-        <button class="audio-btn" id="muteBtn">🔈 Muet</button>
-      </div>
-
-      <footer style="margin-top:12px; font-size:0.85rem; color:var(--muted);">© Sagnweu — Loum, Cameroun</footer>
-    </section>
-
-    <!-- droite : infos -->
-    <aside class="info" aria-labelledby="infoTitle">
-      <h2 id="infoTitle">Informations personnelles</h2>
-      <dl>
-        <dt>Date de naissance</dt><dd>22 mai 2000 — Loum</dd>
-        <dt>Situation</dt><dd>Célibataire</dd>
-        <dt>Niveau d'étude</dt><dd>Master 1 en Mathématiques</dd>
-        <dt>Profession</dt><dd>Enseignant de Mathématiques et Informatique</dd>
-        <dt>Téléphones</dt><dd>657250575 / 670604635</dd>
-        <dt>Email</dt><dd><a href="mailto:juniorsagnweu1@gmail.com">juniorsagnweu1@gmail.com</a></dd>
-        <dt>Adresse</dt><dd>Loum, Cameroun</dd>
-
-        <div class="fullwidth">
-          <dt>Langues</dt><dd>Français (courant) — Anglais (basique)</dd>
-        </div>
-        <div class="fullwidth">
-          <dt>Compétences</dt><dd>Mathématiques, Algorithmique, Initiation à l'informatique, Pédagogie</dd>
-        </div>
-        <div class="fullwidth">
-          <dt>Objectif</dt><dd>Enseigner et contribuer à la réussite des élèves en mathématiques et logique informatique.</dd>
-        </div>
-      </dl>
-
-      <div class="fullwidth" style="margin-top:14px;">
-        <div style="flex:1">
-          <div style="font-weight:700; margin-bottom:8px;">QR Code vers ce site</div>
-          <img src="qr.png" alt="QR code menant au site" class="qr" />
-        </div>
-      </div>
-
-      <div style="margin-top:16px;">
-        <div style="font-weight:700; margin-bottom:8px;">Expériences & Projets</div>
-        <ul style="padding-left:18px; margin:0 0 8px 0; color:#0f172a;">
-          <li>Enseignement en collège / lycée — Cours de mathématiques</li>
-          <li>Initiation à l'informatique et algorithmique</li>
-          <li>Projets pédagogiques & exercices interactifs</li>
-        </ul>
-      </div>
-    </aside>
-  </main>
-
+    <div class="contact-btns">
+      <a class="btn whatsapp" href="https://wa.me/237657250575">WhatsApp</a>
+      <a class="btn" href="mailto:juniorsagnweu1@gmail.com">Email</a>
+    </div>
+  </div>
+  <audio id="bg-music" src="music.mp3" autoplay loop muted></audio>
   <script>
-    // Audio control logic
-    const audio = document.getElementById('bgAudio');
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    const muteBtn = document.getElementById('muteBtn');
-
-    // Try to autoplay with user gesture fallback
-    function tryAutoPlay() {
-      audio.play().then(() => {
-        playPauseBtn.textContent = '⏸︎ Pause';
-      }).catch(() => {
-        // Autoplay blocked — leave paused, user can press Play
-        playPauseBtn.textContent = '▶︎ Play';
-      });
-    }
-    tryAutoPlay();
-
-    playPauseBtn.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-        playPauseBtn.textContent = '⏸︎ Pause';
-      } else {
-        audio.pause();
-        playPauseBtn.textContent = '▶︎ Play';
-      }
-    });
-
-    muteBtn.addEventListener('click', () => {
-      audio.muted = !audio.muted;
-      muteBtn.textContent = audio.muted ? '🔇 Muet' : '🔈 Son';
-    });
-
-    // Accessibility: announce whatsapp button action for screen readers
-    document.getElementById('whatsappBtn').addEventListener('click', () => {
-      // nothing needed, link opens WhatsApp
-    });
+    document.addEventListener("click", function() {
+      const audio = document.getElementById("bg-music");
+      audio.muted = false;
+    }, { once: true });
   </script>
 </body>
 </html>
